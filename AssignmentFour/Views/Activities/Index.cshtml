@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AssignmentFour.Models.Activity>
+
+@{
+    ViewBag.Title = "Activities";
+}
+
+
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        @using (Html.BeginForm("Index", "Activities", FormMethod.Get))
+        {
+        <p>
+            Genre: @Html.DropDownList("ActivityCategory", "All")
+            Title: @Html.TextBox("SearchString") <br />
+            <input type="submit" value="Filter" /> @*After hit submit button it will post the value of searchString*@
+        </p>
+        }
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityParticipants)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityCategory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityLengthHours)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActivityText)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityParticipants)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityCategory)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityLengthHours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActivityText)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
